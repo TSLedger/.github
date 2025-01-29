@@ -16,13 +16,13 @@ jobs:
         with:
           github-organization: 'TSLedger'
       - name: 'Found'
-        run: run: echo ${{ steps.organization-repositories.outputs.repositories }}
+        run: echo ${{ steps.organization-repositories.outputs.repositories }}
   setting-spec:
+    runs-on: ubuntu-latest
     needs: get-repositories
     strategy:
       matrix:
         repository: ${{ fromJSON(needs.fetch-repositories.outputs.repositories) }}
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
