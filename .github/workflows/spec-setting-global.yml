@@ -12,7 +12,7 @@ jobs:
       - uses: austenstone/get-org-repos@v3
         id: get-org-repos
         with:
-          github-token: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.ORG_ACCESS_TOKEN }}
     outputs:
       repos: ${{ steps.get-org-repos.outputs.repos }}
   
