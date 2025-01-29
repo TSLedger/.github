@@ -1,0 +1,36 @@
+name: Setting Specification Matrix Global
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  get-repositories:
+    runs-on: ubuntu-latest
+    outputs:
+      repositories: ${{ steps.get-repositories.outputs.repositories }}
+    steps:
+      - uses: denis-tingajkin/get-organization-repositories@v1
+        id: organization-repositories
+        with:
+          github-organization: 'TSLedger'
+      - name: 'Found'
+        run: run: echo ${{ steps.organization-repositories.outputs.repositories }}
+  setting-spec:
+    needs: get-repositories
+    strategy:
+      matrix:
+        repository: ${{ fromJSON(needs.fetch-repositories.outputs.repositories) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/spec/setting.yml
+      - uses: actuarysailor/gha-repo-manager@v2
+        with:
+          action: apply
+          setting_file: .github/spec/setting.yml
+          repo: ${{ matrix.repository }}
+          token: ${{ secrets.ORG_ACCESS_TOKEN }}
+          
