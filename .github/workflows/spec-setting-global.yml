@@ -8,21 +8,20 @@ on:
 jobs:
   get-repositories:
     runs-on: ubuntu-latest
-    outputs:
-      repositories: ${{ steps.get-repositories.outputs.repositories }}
     steps:
-      - uses: denis-tingajkin/get-organization-repositories@v1
-        id: organization-repositories
+      - uses: austenstone/get-org-repos@v3
+        id: get-org-repos
         with:
-          github-organization: 'TSLedger'
-      - name: 'Found'
-        run: echo ${{ steps.organization-repositories.outputs.repositories }}
+          github-token: ${{ secrets.TOKEN }}
+    outputs:
+      repos: ${{ steps.get-org-repos.outputs.repos }}
   setting-spec:
     runs-on: ubuntu-latest
     needs: get-repositories
     strategy:
       matrix:
-        repository: ${{ fromJSON(needs.get-repositories.outputs.repositories) }}
+        repo: ${{ fromJson(needs.get-org-repos.outputs.repos) }}
+      fast-fail: false
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,6 +30,6 @@ jobs:
         with:
           action: apply
           setting_file: .github/spec/setting.yml
-          repo: ${{ matrix.repository }}
+          repo: ${{ matrix.repo }}
           token: ${{ secrets.ORG_ACCESS_TOKEN }}
           
