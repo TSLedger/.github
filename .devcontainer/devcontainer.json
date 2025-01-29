@@ -18,5 +18,5 @@
             "VisualStudioExptTeam.intellicode-api-usage-examples"
         ]
     },
-    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }
