@@ -1,0 +1,24 @@
+repository:
+  visibility: public
+  has_issues: true
+  has_projects: true
+  has_wiki: true
+  has_discussions: true
+  is_template: false
+  default_branch: main
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true
+  allow_auto_merge: false
+  delete_branch_on_merge: false
+  allow_update_branch: true
+
+branches:
+  - name: main
+    protection:
+      required_status_checks: null
+      enforce_admins: true
+      required_pull_request_reviews: null
+      restrictions: null
+      required_conversation_resolution: true
+      required_linear_history: true
