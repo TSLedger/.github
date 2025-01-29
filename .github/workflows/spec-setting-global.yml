@@ -22,7 +22,7 @@ jobs:
     needs: get-repositories
     strategy:
       matrix:
-        repository: ${{ fromJSON(needs.fetch-repositories.outputs.repositories) }}
+        repository: ${{ fromJSON(needs.get-repositories.outputs.repositories) }}
     steps:
       - uses: actions/checkout@v4
         with:
