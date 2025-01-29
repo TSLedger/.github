@@ -18,7 +18,7 @@ jobs:
   
   setting-spec:
     runs-on: ubuntu-latest
-    needs: get-repositories
+    needs: get-org-repos
     strategy:
       matrix:
         repo: ${{ fromJson(needs.get-org-repos.outputs.repos) }}
