@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         repo: ${{ fromJson(needs.get-org-repos.outputs.repos) }}
-      fast-fail: false
+      fail-fast: false
     steps:
       - uses: actions/checkout@v4
         with:
