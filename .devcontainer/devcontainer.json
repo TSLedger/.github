@@ -1,0 +1,22 @@
+{
+    "name": "Ubuntu Dev Container",
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "customizations": {
+        "settings": {
+            "files.hotExit": "onExitAndWindowClose",
+            "files.insertFinalNewline": true,
+            "files.trimFinalNewlines": true,
+            "editor.formatOnSave": true,
+            "editor.formatOnPaste": true,
+        },
+        "extensions": [
+            // Editor
+            "editorconfig.editorconfig",
+            // IntelliCode
+            "VisualStudioExptTeam.vscodeintellicode",
+            "VisualStudioExptTeam.vscodeintellicode-completions",
+            "VisualStudioExptTeam.intellicode-api-usage-examples"
+        ]
+    },
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+}
