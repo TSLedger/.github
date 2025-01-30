@@ -28,7 +28,7 @@ jobs:
       - uses: actuarysailor/gha-repo-manager@v2
         with:
           action: apply
-          setting_file: .github/spec/setting.yml
+          settings_file: .github/spec/setting.yml
           repo: ${{ matrix.repo }}
           token: ${{ secrets.ORG_ACCESS_TOKEN }}
           
