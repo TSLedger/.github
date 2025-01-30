@@ -16,6 +16,8 @@ branch_protections:
   - name: main
     exists: true
     protection:
+      pr_options: null
+      required_status_checks: null
       enforce_admins: true
       require_linear_history: true
       allow_force_pushes: false
