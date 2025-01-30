@@ -31,6 +31,6 @@ jobs:
         with:
           action: apply
           settings_file: .github/spec/setting.yml
-          repo: ${{ matrix.repo }}
+          repo: TSLedger/${{ matrix.repo }}
           token: ${{ secrets.ORG_ACCESS_TOKEN }}
           
