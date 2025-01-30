@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Get Repositories in Organization
   get-org-repos:
     runs-on: ubuntu-latest
     steps:
@@ -16,6 +17,7 @@ jobs:
     outputs:
       repos: ${{ steps.get-org-repos.outputs.repos }}
   
+  # Works up to 256 Repositories (Matrix Limit)
   setting-spec:
     runs-on: ubuntu-latest
     needs: get-org-repos
